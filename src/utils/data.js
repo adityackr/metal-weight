@@ -1,0 +1,33 @@
+export const densities = {
+	steel: 7850,
+	aluminum: 2730,
+	brass: 8550,
+	copper: 8930,
+	bronze: 8880,
+	zinc: 7200,
+	chromium: 7100,
+	lead: 11370,
+	iron: 7860,
+	gold: 19360,
+	magnesium: 1700,
+	nickel: 8850,
+	titanium: 4500,
+	tin: 7260,
+	teflon: 2200,
+	silver: 10500,
+	platinum: 21450,
+	ss304: 7920,
+	ss316: 7940,
+	ss410: 7710,
+	zirconium: 6510,
+	molybdenum: 10280,
+};
+
+export const materials = {
+	plate: 'Plate',
+	angle: 'Angle',
+	channel: 'Channel',
+	beam: 'Beam',
+	roundBar: 'Round Bar',
+	pipe: 'Pipe',
+};
