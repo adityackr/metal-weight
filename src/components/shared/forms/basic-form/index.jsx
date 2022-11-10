@@ -41,9 +41,11 @@ const BasicForm = ({ onSubmit, handleChange, state, children, weight }) => {
 					Calculate
 				</button>
 			</form>
-			<div className={classes.total}>
-				<p>Total weight is {weight} kg</p>
-			</div>
+			{weight > 0 && (
+				<div className={classes.total}>
+					<p>Total weight is {weight} kg</p>
+				</div>
+			)}
 		</div>
 	);
 };
