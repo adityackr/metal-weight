@@ -1,16 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useForm from '../../../hooks/useForm';
 import { densities } from '../../../utils/data';
 
-const PlateForm = ({ init, handleForm }) => {
-	const {
-		formState: state,
-		handleChange,
-		handleSubmit,
-	} = useForm({ init, validate: true });
+const init = {
+	material: 'steel',
+	len: 1,
+	width: 1,
+	thickness: 1,
+	quantity: 1,
+};
 
-	const cb = ({ values }) => {
-		handleForm(values);
+const PlateForm = () => {
+	const [weight, setWeight] = useState(0);
+
+	const { formState: state, handleChange, handleSubmit } = useForm({ init });
+
+	const weightCalculation = (state) => {
+		const lenNum = parseFloat(state.len);
+		const widthNum = parseFloat(state.width);
+		const thicknessNum = parseFloat(state.thickness);
+		const quantityNum = parseInt(state.quantity);
+		const densityNum = parseFloat(densities[state.material]);
+
+		const result =
+			lenNum * widthNum * (thicknessNum / 1000) * quantityNum * densityNum;
+
+		return parseFloat(result.toFixed(2));
+	};
+
+	const cb = () => {
+		setWeight(weightCalculation(state));
 	};
 
 	return (
@@ -22,7 +41,7 @@ const PlateForm = ({ init, handleForm }) => {
 						onChange={handleChange}
 						name="material"
 						id="material"
-						value={state.material.value}
+						value={state.material}
 					>
 						{Object.keys(densities).map((m) => (
 							<option key={m} value={m}>
@@ -36,11 +55,12 @@ const PlateForm = ({ init, handleForm }) => {
 						Density (kg/m<sup>2</sup>)
 					</label>
 					<input
+						onChange={handleChange}
 						type={'number'}
 						name="density"
 						id="density"
 						disabled
-						value={densities[state.material.value]}
+						value={densities[state.material]}
 					/>
 				</div>
 				<div>
@@ -50,7 +70,7 @@ const PlateForm = ({ init, handleForm }) => {
 						type="number"
 						name="len"
 						id="len"
-						value={state.len.value}
+						value={state.len}
 					/>
 				</div>
 				<div>
@@ -60,7 +80,7 @@ const PlateForm = ({ init, handleForm }) => {
 						type="number"
 						name="width"
 						id="width"
-						value={state.width.value}
+						value={state.width}
 					/>
 				</div>
 				<div>
@@ -70,7 +90,7 @@ const PlateForm = ({ init, handleForm }) => {
 						type="number"
 						name="thickness"
 						id="thickness"
-						value={state.thickness.value}
+						value={state.thickness}
 					/>
 				</div>
 				<div>
@@ -80,7 +100,7 @@ const PlateForm = ({ init, handleForm }) => {
 						type="number"
 						name="quantity"
 						id="quantity"
-						value={state.quantity.value}
+						value={state.quantity}
 					/>
 				</div>
 				<button type="submit">Calculate</button>
