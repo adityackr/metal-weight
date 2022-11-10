@@ -44,6 +44,13 @@ const PlateForm = () => {
 					name={'width'}
 					value={state.width}
 				/>
+
+				<NumberInput
+					handleChange={handleChange}
+					label={'Thickness (mm)'}
+					name={'thickness'}
+					value={state.thickness}
+				/>
 			</BasicForm>
 		</div>
 	);

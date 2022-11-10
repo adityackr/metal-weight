@@ -32,13 +32,6 @@ const BasicForm = ({ onSubmit, handleChange, state, children, weight }) => {
 
 				<NumberInput
 					handleChange={handleChange}
-					label={'Thickness (mm)'}
-					name={'thickness'}
-					value={state.thickness}
-				/>
-
-				<NumberInput
-					handleChange={handleChange}
 					label={'Quantity (pcs)'}
 					name={'quantity'}
 					value={state.quantity}

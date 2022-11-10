@@ -20,7 +20,25 @@ export const angleWeight = (state) => {
 	const quantity = parseFloat(state.quantity);
 	const density = parseFloat(densities[state.material]);
 
-	const result = len * (height + width) * thickness * quantity * density;
+	const result =
+		len * (height + width - thickness) * thickness * quantity * density;
+
+	return parseFloat(result.toFixed(2));
+};
+
+export const channelWeight = (state) => {
+	const len = parseFloat(state.len) / 1000;
+	const width = parseFloat(state.width) / 1000;
+	const height = parseFloat(state.height) / 1000;
+	const webThickness = parseFloat(state.webThickness) / 1000;
+	const flangeThickness = parseFloat(state.flangeThickness) / 1000;
+	const quantity = parseFloat(state.quantity);
+	const density = parseFloat(densities[state.material]);
+
+	const heightVolume = (height - webThickness) * flangeThickness * 2 * len;
+	const widthVolume = width * len * webThickness;
+
+	const result = (heightVolume + widthVolume) * quantity * density;
 
 	return parseFloat(result.toFixed(2));
 };
