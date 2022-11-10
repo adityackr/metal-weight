@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { materials } from '../../../utils/data';
+import { materials } from '../../utils/data';
 import PlateForm from '../plate-form';
+import SelectInput from '../ui/select-input';
+import classes from './index.module.css';
 
 const MainForm = () => {
 	const [material, setMaterial] = useState('');
@@ -10,23 +12,23 @@ const MainForm = () => {
 	};
 
 	return (
-		<div>
+		<div className={classes.mainForm}>
 			<div>
-				<select
+				<SelectInput
 					defaultValue={'heading'}
-					onChange={handleMaterial}
+					handleChange={handleMaterial}
 					name="materialType"
-					id="materialType"
+					customClass={classes.select}
 				>
 					<option disabled value={'heading'}>
-						Choose you material type
+						Select material
 					</option>
 					{Object.keys(materials).map((m) => (
 						<option key={m} value={m}>
 							{materials[m]}
 						</option>
 					))}
-				</select>
+				</SelectInput>
 			</div>
 			{material === 'plate' && <PlateForm />}
 		</div>

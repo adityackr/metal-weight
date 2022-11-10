@@ -1,5 +1,5 @@
 import React from 'react';
-import MainForm from './components/forms/main-form';
+import MainForm from './components/main-form';
 
 const App = () => {
 	return (
