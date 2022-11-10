@@ -4,6 +4,7 @@ import AngleForm from '../angle-form';
 import BeamForm from '../beam-form';
 import ChannelForm from '../channel-form';
 import PlateForm from '../plate-form';
+import RoundBarForm from '../roundbar-form';
 import SelectInput from '../ui/select-input';
 import classes from './index.module.css';
 
@@ -37,6 +38,7 @@ const MainForm = () => {
 			{material === 'angle' && <AngleForm />}
 			{material === 'channel' && <ChannelForm />}
 			{material === 'beam' && <BeamForm />}
+			{material === 'roundBar' && <RoundBarForm />}
 		</div>
 	);
 };
