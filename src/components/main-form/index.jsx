@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { materials } from '../../utils/data';
 import AngleForm from '../angle-form';
+import BeamForm from '../beam-form';
 import ChannelForm from '../channel-form';
 import PlateForm from '../plate-form';
 import SelectInput from '../ui/select-input';
@@ -35,6 +36,7 @@ const MainForm = () => {
 			{material === 'plate' && <PlateForm />}
 			{material === 'angle' && <AngleForm />}
 			{material === 'channel' && <ChannelForm />}
+			{material === 'beam' && <BeamForm />}
 		</div>
 	);
 };

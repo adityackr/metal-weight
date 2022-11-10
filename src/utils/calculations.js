@@ -42,3 +42,20 @@ export const channelWeight = (state) => {
 
 	return parseFloat(result.toFixed(2));
 };
+
+export const beamWeight = (state) => {
+	const len = parseFloat(state.len) / 1000;
+	const width = parseFloat(state.width) / 1000;
+	const height = parseFloat(state.height) / 1000;
+	const webThickness = parseFloat(state.webThickness) / 1000;
+	const flangeThickness = parseFloat(state.flangeThickness) / 1000;
+	const quantity = parseFloat(state.quantity);
+	const density = parseFloat(densities[state.material]);
+
+	const heightVolume = (height - flangeThickness * 2) * webThickness * len;
+	const widthVolume = width * len * flangeThickness * 2;
+
+	const result = (heightVolume + widthVolume) * quantity * density;
+
+	return parseFloat(result.toFixed(2));
+};
