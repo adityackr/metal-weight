@@ -3,6 +3,7 @@ import { materials } from '../../utils/data';
 import AngleForm from '../angle-form';
 import BeamForm from '../beam-form';
 import ChannelForm from '../channel-form';
+import PipeForm from '../pipeForm';
 import PlateForm from '../plate-form';
 import RoundBarForm from '../roundbar-form';
 import SelectInput from '../ui/select-input';
@@ -39,6 +40,7 @@ const MainForm = () => {
 			{material === 'channel' && <ChannelForm />}
 			{material === 'beam' && <BeamForm />}
 			{material === 'roundBar' && <RoundBarForm />}
+			{material === 'pipe' && <PipeForm />}
 		</div>
 	);
 };

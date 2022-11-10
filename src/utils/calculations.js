@@ -70,3 +70,20 @@ export const roundBarWeight = (state) => {
 
 	return parseFloat(result.toFixed(2));
 };
+
+export const pipeWeight = (state) => {
+	const len = parseFloat(state.len) / 1000;
+	const dia = parseFloat(state.dia) / 1000;
+	const thickness = parseFloat(state.thickness) / 1000;
+	const quantity = parseFloat(state.quantity);
+	const density = parseFloat(densities[state.material]);
+
+	const result =
+		3.1416 *
+		len *
+		((dia / 2) ** 2 - (dia / 2 - thickness) ** 2) *
+		quantity *
+		density;
+
+	return parseFloat(result.toFixed(2));
+};
